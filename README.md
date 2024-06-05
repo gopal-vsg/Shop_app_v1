@@ -3,6 +3,8 @@ Shop App v1
 This is a simple web application built with Svelte and Supabase that allows you to manage a list of shops and their owners. 
 Here's a brief description of the functionalities and how it works.
 
+![screenshot](Screenshot of website.png)
+
 Functionality : 
 
 Display Shop Details: 
