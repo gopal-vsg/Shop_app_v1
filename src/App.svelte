@@ -5,6 +5,7 @@
   let users = [];
   let message = "";
   let editingUser = null;
+  
   let new_shop = '';
   let new_owner = '';
 
@@ -13,7 +14,7 @@
       .from("shop_app_v1")
       .select("shop_id, shop_name, shop_owner");
     if (error) {
-      message = "Something is messed up";
+      message = "Failed to Fetech Details";
     } else {
       users = data;
     }
@@ -61,6 +62,8 @@
 <main>
   <p>{message}</p>
   <div class="table">
+    <p class="title"> Details of Shops </p>
+    <p class="index">Shop Name<span></span>Shop Owner</p>
     {#each users as user}
       {#if editingUser && editingUser.shop_id === user.shop_id}
         <div>
@@ -73,14 +76,19 @@
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
         <p on:click={() => startEditing(user)}>
-          shop name : {user.shop_name} shop owner : {user.shop_owner}
+          {user.shop_name} <span></span>{user.shop_owner}
         </p>
+        
       {/if}
     {/each}
   </div>
-  <label for="">enter name</label>
+  <p class="note">*Click on the values to Edit</p>
+  <br>
+  <h3> Enter new Values </h3>
+  <br>
+  <label for="">enter Shop name</label>
   <input type="text" bind:value={new_shop}>
-  <label for="">enter owner</label>
+  <label for="">enter owner name</label>
   <input type="text" bind:value={new_owner}>
   <button on:click={add}>add</button>
 </main>
